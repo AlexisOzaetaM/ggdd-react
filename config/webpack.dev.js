@@ -4,7 +4,7 @@ const common = require('./webpack.common');
 devConfig = {
     mode: "development",
     devServer: {
-        contentBase: path.join(__dirname, 'dist'),
+        contentBase: '../dist',
         port: 3000,
         open: true,
     }
