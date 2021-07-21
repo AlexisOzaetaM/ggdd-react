@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import HelloWorld from './components/HelloWorld';
+import { App } from './App';
+
+import './normalize.css';
 
 ReactDOM.render(
-    <HelloWorld />, 
+    <App />, 
     document.getElementById("app")
     );
