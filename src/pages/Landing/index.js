@@ -1,19 +1,20 @@
 import React from 'react';
 import { Navbar } from '../../components/Navbar'
 import { LandingInfo } from './LandingInfo'
+import { OPTION_TYPE_BUTTON, OPTION_TYPE_LINK } from '../../constants/Navbar'
 
 import './Landing.scss'
 
 const options = [
     {
-        type: "link",
+        type: OPTION_TYPE_LINK,
         name: "En Vivo",
         link: "/"
     },
     {
-        type: "button",
+        type: OPTION_TYPE_BUTTON,
         name: "Soy Entrenador",
-        link: "/coach"
+        link: "/coach/login"
     }
 ]
 

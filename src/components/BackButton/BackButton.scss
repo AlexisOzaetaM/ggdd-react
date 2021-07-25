@@ -1,0 +1,44 @@
+.basic-anchor {
+    text-decoration: none;
+    color: #424242;
+}
+
+.backButton {
+    &-left,
+    &-right {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        margin: 1rem;
+
+        & a {
+            @extend .basic-anchor;
+            display: flex;
+            align-items: center;
+        }
+
+        & a svg {
+            width: 1rem;
+        }
+    }
+    
+    &-left {
+        justify-content: start;
+        left: 0;
+
+        & a svg {
+            margin-right: .5rem;
+        }
+    }
+
+    &-right {
+        justify-content: end;
+        right: 0;
+
+        & a svg {
+            margin-left: .5rem;
+        }
+    }    
+}
