@@ -1,0 +1,54 @@
+@import '../../colors.scss';
+
+$input-width: 20rem;
+$input-height: 2.5rem;
+$border-radius: .25rem;
+
+.textBox {
+    display: flex;
+    flex-direction: column;
+
+    &__label {
+        font-size: 1rem;
+        margin: 0 0 .3rem 0;
+        color: $text-color;
+    }
+
+    &__input {
+        height: $input-height;
+        width: $input-width;
+        border-radius: $border-radius;
+        line-height: $input-height;
+        border: 1px $text-color solid;
+        color: $text-color;
+        text-indent: .5rem;
+        background-image:none;
+        background-color:transparent;
+        box-shadow: none;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-sizing: border-box;
+
+        &:focus {
+            border: 1px $focus-color solid;
+            outline: none;
+        }     
+    }
+
+    &__error {      
+        margin: .2rem 0 .5rem .6rem;
+        &-show {
+            font-size: .9rem;
+            color: $red-500;
+            margin: .2rem 0 .5rem .6rem;
+        }
+    }
+}
+
+@media (max-width: 576px) {   
+    .textBox {
+        &__input {
+            width: 100%;
+        }
+    }
+}
