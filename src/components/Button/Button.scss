@@ -1,0 +1,20 @@
+@import '../../colors.scss';
+
+$button-width: 100%;
+$button-height: 2.5rem;
+$border-radius: .25rem;
+
+.button {
+    height: $button-height;
+    width: $button-width;
+    background-color: $blue-700;
+    color: white;
+    border: none;
+    appearance: none;
+    display: block;
+    border-radius: $border-radius;
+}
+
+.button:disabled {
+    opacity: .5;
+}
