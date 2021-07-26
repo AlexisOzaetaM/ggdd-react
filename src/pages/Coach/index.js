@@ -15,7 +15,7 @@ export const Coach = () => {
         },  
         {
             type: OPTION_TYPE_LOGOUT,
-            name: "Cerrar sesi&oacute;n",
+            name: "Cerrar sesión",
             method: logout,
             link: "/logout"
         },
