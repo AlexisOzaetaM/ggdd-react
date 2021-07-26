@@ -22,16 +22,29 @@ $button-bg: #03A9F4;
     display: flex;
     flex-direction: row;
 
-    &__logo {
-        width: 20rem;
-        height: 100%;
+    &__header {
+        display: flex;
+        flex-direction: row;
 
-        & a {
-            display: flex;
+        &__logo {
+            width: 20rem;
             height: 100%;
-            width: 100%;
-            justify-content: center;
-            align-items: center;
+    
+            & a {
+                display: flex;
+                height: 100%;
+                width: 100%;
+                justify-content: center;
+                align-items: center;
+
+                & path {
+                    fill: $icon-color;
+                }
+            }
+        }
+
+        &__toggleButton {
+            display: none;
         }
     }
 
@@ -44,6 +57,28 @@ $button-bg: #03A9F4;
         align-items: center;
         justify-content: end;
 
+        &-show {
+            height: 100%;
+            width: 100%;
+            list-style: none;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: end;
+
+            & li:first-child() {
+                margin-left: 0;
+            }
+    
+            & li {
+                margin-left: $option-margin-left;
+            }
+    
+            & li a {
+                @extend .basic-anchor
+            }
+        }
+
         & li:first-child() {
             margin-left: 0;
         }
@@ -54,6 +89,10 @@ $button-bg: #03A9F4;
 
         & li a {
             @extend .basic-anchor
+        }
+
+        &-hide {
+            display: none;
         }
 
         &__link a {
@@ -97,6 +136,88 @@ $button-bg: #03A9F4;
     }
 }
 
+// Tablet screen
+@media (min-width: 577px) and (max-width: 768px) {
+    .navbar {
+        height: auto;
+        padding: $navbar-padding $navbar-padding * 4;
+        display: flex;
+        flex-direction: column;
+
+        &__header {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+
+            &__logo {
+                width: 35rem;
+                height: $logo-height;
+            }
+
+            &__toggleButton {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                height: $logo-height;
+                width: 100%;
+                float: right;
+    
+                & div {
+                    height: $logo-height;
+                    width: $logo-height;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                & div svg {
+                    height: 50%;
+
+                    & path {
+                        fill: $text-color;
+                    }
+                }
+            }
+        }
+
+        &__options {
+            &-show {
+                height: auto;
+                width: 100%;
+                background-color: $navbar-bg;
+                flex-direction: column;
+                align-items: flex-end;
+                justify-content: end;
+                padding: $navbar-padding * 2 $navbar-padding * 2;
+            }
+
+            &-hide {
+                display: none;
+            }
+
+            &__logout div {
+                color: $red-800;
+                height: 100%;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+            }
+
+            &__logout,
+            &__link {
+                height: $button-height;
+            }
+
+            &__button {
+                margin-top: $navbar-padding * 2;
+            }
+        }
+    }
+}
+
+// Mobile screen
 @media (max-width: 576px) {
     $navbar-padding: .3rem;
     $option-margin-left: .7rem;
@@ -105,29 +226,60 @@ $button-bg: #03A9F4;
     $toggle-icon-width: 70%;
 
     .navbar {
-        background-color: $navbar-bg;
         height: auto;
         padding: $navbar-padding $navbar-padding * 2;
         display: flex;
         flex-direction: column;
     
-        &__logo {
-            width: 100%;
-            height: $logo-height;
+        &__header {
+            &__logo {
+                width: 100%;
+                height: $logo-height;
+        
+                & a svg {
+                    width: 95%;
+                }
+            }
+
+            &__toggleButton {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: $logo-height;
+                width: $logo-height;
     
-            & a svg {
-                width: 95%;
+                & div {
+                    height: $logo-height;
+                    width: $logo-height;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                & div svg {
+                    height: 50%;
+
+                    & path {
+                        fill: $text-color;
+                    }
+                }
             }
         }
     
         &__options {
-            height: auto;
-            width: inherit;
-            background-color: $navbar-bg;
-            flex-direction: column;
-            align-items: flex-end;
-            justify-content: end;
-            padding: $navbar-padding * 2 $navbar-padding * 2;
+            &-show {
+                height: auto;
+                width: inherit;
+                background-color: $navbar-bg;
+                flex-direction: column;
+                align-items: flex-end;
+                justify-content: end;
+                padding: $navbar-padding * 2 $navbar-padding * 2;
+            }
+
+            &-hide {
+                display: none;
+            }
 
             &__logout div {
                 color: $red-800;
