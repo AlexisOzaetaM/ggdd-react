@@ -8,25 +8,46 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
-    const [currentUser, setCurrentUser] = useState()
-    const [isLoading, setLoading] = useState(false)
+    const [state, changeState] = useState({
+        wasChecked: false,
+        user: null,
+        listener: null
+    })
 
     function login(email, password) {
         return auth.signInWithEmailAndPassword(email, password)
     }
 
-    useEffect(() => {
-        const unsuscribe = auth.onAuthStateChanged(user => {
-            setCurrentUser(user)
-            setLoading(false)
-        })
+    function logout() {
+        return auth.signOut()
+    }
 
-        return unsuscribe
+    useEffect(() => {
+        if (state.listener == null) {
+            changeState({
+                ...state, 
+                listener: auth.onAuthStateChanged((user) => {
+                    changeState(oldState => ({
+                        ...oldState,
+                        wasChecked: true,
+                        user: user ? user : null
+                    }))
+                })
+            })
+        }
+
+        return () => {
+            if (state.listener)
+                state.listener()
+        }
     }, [])
 
+    const { user, wasChecked } = state
     const value = {
-        currentUser,
-        login
+        wasChecked,
+        user,
+        login,
+        logout
     }
 
     return (

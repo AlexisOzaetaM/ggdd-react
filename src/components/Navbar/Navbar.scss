@@ -23,13 +23,15 @@ $button-bg: #03A9F4;
     flex-direction: row;
 
     &__logo {
-        width: 15rem;
+        width: 20rem;
         height: 100%;
-        background-color: #424242;
 
-        & img {
-            width: 100%;
+        & a {
+            display: flex;
             height: 100%;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
         }
     }
 
@@ -54,7 +56,7 @@ $button-bg: #03A9F4;
             @extend .basic-anchor
         }
 
-        &_link a {
+        &__link a {
             display: table-cell;
             vertical-align: middle;
             height: $button-height;
@@ -65,7 +67,7 @@ $button-bg: #03A9F4;
             }
         }
 
-        &_button {
+        &__button {
             & a button {
                 height: $button-height;
                 padding: 0 $button-padding;
@@ -78,6 +80,19 @@ $button-bg: #03A9F4;
                     opacity: .9;
                 }
             }
+        }
+
+        &__logout div {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        &__logout div:hover {
+            height: $button-height;
+            color: $red-800;
         }
     }
 }
@@ -100,22 +115,37 @@ $button-bg: #03A9F4;
             width: 100%;
             height: $logo-height;
     
-            & img {
-                width: 100%;
-                height: 100%;
+            & a svg {
+                width: 95%;
             }
         }
     
         &__options {
-            top: $navbar-height + $navbar-padding;
             height: auto;
             width: inherit;
             background-color: $navbar-bg;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
+            flex-direction: column;
+            align-items: flex-end;
             justify-content: end;
             padding: $navbar-padding * 2 $navbar-padding * 2;
+
+            &__logout div {
+                color: $red-800;
+                height: 100%;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+            }
+
+            &__logout,
+            &__link {
+                height: $button-height;
+            }
+
+            &__button {
+                margin-top: $navbar-padding * 2;
+            }
         }
     }
 }
