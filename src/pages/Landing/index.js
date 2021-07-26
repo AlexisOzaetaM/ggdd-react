@@ -9,18 +9,20 @@ const options = [
     {
         type: OPTION_TYPE_LINK,
         name: "En Vivo",
+        method: undefined,
         link: "/"
     },
     {
         type: OPTION_TYPE_BUTTON,
         name: "Soy Entrenador",
-        link: "/coach/login"
+        method: undefined,
+        link: "/coach"
     }
 ]
 
 export const Landing = () => (
     <div className="landing">
-        <Navbar options={options} />
+        <Navbar path="/" options={options} />
         <LandingInfo />
     </div>
 );

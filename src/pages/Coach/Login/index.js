@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from '@reach/router'
+import { useHistory } from 'react-router-dom'
 import { Card } from '../../../components/Card'
 import { Form } from '../../../components/Form'
 import { Input, INPUT_TYPE_EMAIL, INPUT_TYPE_PASSWORD } from '../../../components/Input'
@@ -17,7 +17,7 @@ export const CoachLogin = () => {
     const [passwordError, setPasswordError] = useState("")
     const [isLoading, setLoading] = useState(false)
     const { login } = useAuth()
-    const navigate = useNavigate()
+    const navigate = useHistory()
 
     let onChangeEmail = (e) => {
         e.preventDefault();
@@ -32,19 +32,17 @@ export const CoachLogin = () => {
     async function handleSubmit(e) {
         e.preventDefault();
         try {
+            await login(email, password);
             setPasswordError("")
             setEmailError("")
-            setLoading(true)
-            await login(email, password);
-            navigate("/")
+            navigate.push("/coach")
         } catch (ex) {
             if (ex.code === FIREBASE_ERROR_AUTH_USER_NOT_FOUND)
                 setEmailError("El correo no existe o está mal escrito.")
             else if (ex.code === FIREBASE_ERROR_AUTH_WRONG_PASSWORD)
                 setPasswordError("La constraseña es incorrecta.")
-        } finally {
-            setLoading(false)
         }
+        setLoading(false)
     }
 
     return (
